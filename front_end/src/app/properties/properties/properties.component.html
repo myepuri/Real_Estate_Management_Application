@@ -1,0 +1,70 @@
+<h2>Filter Properties</h2>
+<form #propertyFilter="ngForm" class="form">
+  <!-- PROPERTY TYPE -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Property Type</mat-label>
+    <mat-select [(ngModel)]="propertytype" name="propertytype">
+      <mat-option value="house">House</mat-option>
+      <mat-option value="apartment">Apartment</mat-option>
+      <mat-option value="commercialbuilding">Commercial Building</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- LOCATION -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Location</mat-label>
+    <input matInput type="text" [(ngModel)]="location" name="location" />
+  </mat-form-field>
+
+  <!-- START DATE -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Start Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [(ngModel)]="startdate"
+      name="startdate"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- END DATE -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>End Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker1"
+      [(ngModel)]="enddate"
+      name="enddate"
+    />
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker1"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <button
+    class="button"
+    mat-raised-button
+    color="primary"
+    (click)="filterProperties()"
+  >
+    Filter
+  </button>
+
+  <mat-card class="example-card" *ngFor="let property of properties">
+    <mat-card-content>
+      <p>PID: {{ property.pid }}</p>
+      <p>Location: {{ property.location }}</p>
+      <p>Number of Rooms: {{ property.noOfRooms }}</p>
+      <p>Square Foot: {{ property.sqFoot }}</p>
+      <p>Sale Type: {{ property.saleType }}</p>
+      <p>City: {{ property.city }}</p>
+      <p>Price: {{ property.price }}</p>
+      <p>Availability: {{ property.availablity }}</p>
+      <p>Property Type: {{ property.ptype }}</p>
+    </mat-card-content>
+  </mat-card>
+</form>
