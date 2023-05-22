@@ -1,0 +1,200 @@
+-- Database: Real Estate 
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id BIGSERIAL NOT NULL,
+    email character varying(50) NOT NULL,
+    name character varying(30) NOT NULL,
+    user_type character varying(10) NOT NULL,
+    password character varying(20),
+    PRIMARY KEY (id, email),
+    UNIQUE (email)
+);
+CREATE TABLE IF NOT EXISTS public.property
+(
+    pid BIGSERIAL NOT NULL,
+    property_type character varying(20) NOT NULL,
+    sale_type character varying(10) NOT NULL,
+    city character varying(20) NOT NULL,
+    state character varying(15) NOT NULL,
+    zipcode character varying(10) NOT NULL,
+    description character varying(50),
+    price integer NOT NULL,
+    availability date,
+    email character varying(50),
+    PRIMARY KEY (pid)
+);
+CREATE TABLE IF NOT EXISTS public.renter
+(
+    rid character varying(50) NOT NULL,
+    name character varying(30) NOT NULL,
+    move_in_date date NOT NULL,
+    preferred_location character varying(20) NOT NULL,
+    budget integer NOT NULL,
+    id BIGSERIAL NOT NULL,
+    PRIMARY KEY (rid)
+);
+CREATE TABLE IF NOT EXISTS public.agent
+(
+    agid character varying(50) NOT NULL,
+    name character varying(30) NOT NULL,
+    job_title character varying(20) NOT NULL,
+    agency_name character varying(25) NOT NULL,
+    phone character varying(13) NOT NULL,
+    id BIGSERIAL NOT NULL,
+    PRIMARY KEY (agid)
+);
+	
+CREATE TABLE IF NOT EXISTS public.additional_info
+(
+    pid integer NOT NULL,
+    crimerate character varying(10) NOT NULL,
+    schools_nearby character varying(100) NOT NULL,
+    id BIGSERIAL,
+    PRIMARY KEY (pid),
+    FOREIGN KEY (pid)
+        REFERENCES public.property (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS public.address
+(
+    id BIGSERIAL NOT NULL,
+    email character varying(50) NOT NULL,
+    city character varying(20) NOT NULL,
+    state character varying(20) NOT NULL,
+    zipcode character varying(10) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (email)
+        REFERENCES public.users (email)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.appartments
+(
+    propertyid integer NOT NULL,
+    location character varying(20) NOT NULL,
+    number_of_rooms integer NOT NULL,
+    sq_foot integer NOT NULL,
+    building_type character varying(10) NOT NULL,
+    id BIGSERIAL,
+    PRIMARY KEY (propertyid),
+    FOREIGN KEY (propertyid)
+        REFERENCES public.property (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS public.booking
+(
+    id BIGSERIAL NOT NULL,
+    email character varying(50) NOT NULL,
+    pid integer NOT NULL,
+    name character varying(25) NOT NULL,
+    creditcard_number numeric(20,0) NOT NULL,
+    booking_amount integer NOT NULL,
+    start_date date NOT NULL,
+    end_date date NOT NULL,
+    PRIMARY KEY (id, email, pid),
+    UNIQUE (id),
+    UNIQUE (pid),
+    FOREIGN KEY (email)
+        REFERENCES public.renter (rid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
+    FOREIGN KEY (pid)
+        REFERENCES public.property (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS public.commercial_buildings
+(
+    id BIGSERIAL,
+    propertyid integer NOT NULL,
+    location character varying(20) NOT NULL,
+    sq_foot integer NOT NULL,
+    business_type character varying(10) NOT NULL,
+    PRIMARY KEY (propertyid),
+    FOREIGN KEY (propertyid)
+        REFERENCES public.property (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS public.creditcard
+(
+    rid character varying(50) NOT NULL,
+    creditcard_number numeric(20,0) NOT NULL,
+    name character varying(20) NOT NULL,
+    expiry_date character varying(10) NOT NULL,
+    cvv integer NOT NULL,
+    billing_address character varying(100) NOT NULL,
+    id BIGSERIAL NOT NULL,
+    PRIMARY KEY (rid),
+    FOREIGN KEY (rid)
+        REFERENCES public.renter (rid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS public.house
+(
+    propertyid bigint NOT NULL,
+    location character varying(20) NOT NULL,
+    number_of_rooms bigint NOT NULL,
+    sq_foot bigint NOT NULL,
+    id BIGSERIAL,
+    PRIMARY KEY (propertyid),
+    FOREIGN KEY (propertyid)
+        REFERENCES public.property (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS public.neighbourhood_info
+(
+    pid integer NOT NULL,
+    land character varying(30) NOT NULL,
+    vacation_homes character varying(30) NOT NULL,
+    id BIGSERIAL,
+    PRIMARY KEY (pid),
+    FOREIGN KEY (pid)
+        REFERENCES public.property (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS public.rewards
+(
+    email character varying(50) NOT NULL,
+    pid integer NOT NULL,
+    bid integer NOT NULL,
+    name character varying(25) NOT NULL,
+    reward_point integer NOT NULL,
+    id BIGSERIAL,
+    PRIMARY KEY (email, bid, pid),
+    FOREIGN KEY (bid)
+        REFERENCES public.booking (id)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
+    FOREIGN KEY (email)
+        REFERENCES public.renter (rid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
+    FOREIGN KEY (pid)
+        REFERENCES public.booking (pid)
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+);
+
+
+
+
+       

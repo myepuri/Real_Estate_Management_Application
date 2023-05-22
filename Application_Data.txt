@@ -1,0 +1,295 @@
+
+
+--users
+INSERT INTO public.users(email, name, user_type, password)
+VALUES ('john_doe@example.com', 'John Doe', 'renter', 'password123');
+
+INSERT INTO public.users(email, name, user_type, password)
+VALUES ('jane_doe@example.com', 'Jane Doe', 'agent', 'password456');
+
+INSERT INTO public.users(email, name, user_type, password)
+VALUES ('michael_smith@example.com', 'Michael Smith', 'renter', 'password789');
+
+INSERT INTO public.users(email, name, user_type, password)
+VALUES ('emily_clark@example.com', 'Emily Clark', 'agent', 'password321');
+
+INSERT INTO public.users(email, name, user_type, password)
+VALUES ('olivia_jones@example.com', 'Olivia Jones', 'renter', 'password654');
+
+INSERT INTO public.users(id, email, name, user_type, password)
+VALUES (DEFAULT, 'david_johnson@example.com', 'David Johnson', 'renter', 'davidjohnson1234');
+
+INSERT INTO public.users(id, email, name, user_type, password)
+VALUES (DEFAULT, 'sophia_williams@example.com', 'Sophia Williams', 'renter', 'sophiawilliams1234');
+
+INSERT INTO public.users(id, email, name, user_type, password)
+VALUES (DEFAULT, 'william_brown@example.com', 'William Brown', 'agent', 'williambrown1234');
+
+INSERT INTO public.users(id, email, name, user_type, password)
+VALUES (DEFAULT, 'james_garcia@example.com', 'James Garcia', 'agent', 'jamesgarcia1234');
+
+INSERT INTO public.users(id, email, name, user_type, password)
+VALUES (DEFAULT, 'charlotte_miller@example.com', 'Charlotte Miller', 'agent', 'charlottemiller1234');
+
+
+--renters
+
+INSERT INTO public.renter(rid, name, move_in_date, preferred_location, budget)
+VALUES ('john_doe@example.com', 'John Doe', '2023-05-15', 'Downtown', 1500);
+
+INSERT INTO public.renter(rid, name, move_in_date, preferred_location, budget)
+VALUES ('michael_smith@example.com', 'Michael Smith', '2023-06-01', 'Uptown', 2000);
+
+INSERT INTO public.renter(rid, name, move_in_date, preferred_location, budget)
+VALUES ('olivia_jones@example.com', 'Olivia Jones', '2023-07-15', 'Midtown', 2500);
+
+INSERT INTO public.renter(rid, name, move_in_date, preferred_location, budget)
+VALUES ('david_johnson@example.com', 'David Johnson', '2023-08-01', 'Downtown', 3000);
+
+INSERT INTO public.renter(rid, name, move_in_date, preferred_location, budget)
+VALUES ('sophia_williams@example.com', 'Sophia Williams', '2023-09-15', 'Uptown', 3500);
+
+
+--agent
+INSERT INTO public.agent(agid, name, job_title, agency_name, phone)
+VALUES ('jane_doe@example.com', 'Jane Doe', 'Real Estate Agent', 'Best Estates', '555-123-4567');
+
+INSERT INTO public.agent(agid, name, job_title, agency_name, phone)
+VALUES ('emily_clark@example.com', 'Emily Clark', 'Real Estate Agent', 'Dream Homes', '555-123-8910');
+
+INSERT INTO public.agent(agid, name, job_title, agency_name, phone)
+VALUES ('william_brown@example.com', 'William Brown', 'Real Estate Agent', 'Skyline Realty', '555-123-1112');
+
+INSERT INTO public.agent(agid, name, job_title, agency_name, phone)
+VALUES ('james_garcia@example.com', 'James Garcia', 'Real Estate Agent', 'Property Pros', '555-123-1314');
+
+INSERT INTO public.agent(agid, name, job_title, agency_name, phone)
+VALUES ('charlotte_miller@example.com', 'Charlotte Miller', 'Real Estate Agent', 'City Living', '555-123-1516');
+
+
+
+--property
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Apartment', 'Sale', 'Los Angeles', 'CA', '90001', 'Luxurious 2 bedroom apartment', 600000, '2023-06-15', 'emily_clark@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Commercial_Building', 'Sale', 'Chicago', 'IL', '60601', 'Prime commercial building', 2000000, '2023-07-01', 'william_brown@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('House', 'Sale', 'Houston', 'TX', '77001', 'Cozy 4 bedroom house', 350000, '2023-07-15', 'james_garcia@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Apartment', 'Rental', 'Philadelphia', 'PA', '19101', 'Modern 1 bedroom apartment', 1500, '2023-08-01', 'charlotte_miller@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('House', 'Rental', 'Los Angeles', 'CA', '90002', 'Beautiful 3 bedroom house for rent', 4000, '2023-06-20', 'emily_clark@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Apartment', 'Sale', 'Los Angeles', 'CA', '90003', 'Spacious 1 bedroom apartment', 450000, '2023-06-25', 'emily_clark@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Commercial_Building', 'Rental', 'Chicago', 'IL', '60602', 'Office space in downtown', 10000, '2023-07-10', 'william_brown@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('House', 'Rental', 'Chicago', 'IL', '60603', '2 bedroom townhouse for rent', 2500, '2023-07-20', 'william_brown@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Apartment', 'Rental', 'Houston', 'TX', '77002', 'Studio apartment in the city center', 1200, '2023-08-01', 'james_garcia@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('House', 'Sale', 'Houston', 'TX', '77003', 'Newly built 5 bedroom house', 550000, '2023-08-15', 'james_garcia@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Commercial_Building', 'Sale', 'Philadelphia', 'PA', '19102', 'Commercial property in a prime location', 1500000, '2023-09-01', 'charlotte_miller@example.com');
+
+INSERT INTO public.property(property_type, sale_type, city, state, zipcode, description, price, availability, email)
+VALUES ('Apartment', 'Sale', 'Philadelphia', 'PA', '19103', '3 bedroom penthouse apartment', 750000, '2023-09-15', 'charlotte_miller@example.com');
+
+
+--additional_info
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (1, 'Low', 'Elementary School A, Middle School A, High School A');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (2, 'Medium', 'Elementary School B, Middle School B, High School B');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (3, 'High', 'Elementary School C, Middle School C, High School C');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (4, 'Low', 'Elementary School D, Middle School D, High School D');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (5, 'Medium', 'Elementary School E, Middle School E, High School E');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (6, 'Low', 'Elementary School F, Middle School F, High School F');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (7, 'High', 'Elementary School G, Middle School G, High School G');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (8, 'Low', 'Elementary School H, Middle School H, High School H');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (9, 'Medium', 'Elementary School I, Middle School I, High School I');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (10, 'High', 'Elementary School J, Middle School J, High School J');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (11, 'Low', 'Elementary School K, Middle School K, High School K');
+
+INSERT INTO public.additional_info(pid, crimerate, schools_nearby)
+VALUES (12, 'Medium', 'Elementary School L, Middle School L, High School L');
+
+
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (1, 'Residential', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (2, 'Residential', 'Yes');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (3, 'Commercial', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (4, 'Residential', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (5, 'Residential', 'Yes');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (6, 'Commercial', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (7, 'Residential', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (8, 'Residential', 'Yes');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (9, 'Commercial', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (10, 'Residential', 'No');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (11, 'Residential', 'Yes');
+
+INSERT INTO public.neighbourhood_info(pid, land, vacation_homes)
+VALUES (12, 'Commercial', 'No');
+
+
+
+-- booking
+INSERT INTO public.booking(email, pid, name, creditcard_number, booking_amount, start_date, end_date)
+VALUES ('john_doe@example.com', 1, 'John Doe', 1234567890123456, 2000, '2023-05-15', '2024-05-30');
+
+INSERT INTO public.booking(email, pid, name, creditcard_number, booking_amount, start_date, end_date)
+VALUES ('michael_smith@example.com', 2, 'Michael Smith', 2345678901234567, 1500, '2023-06-01', '2025-12-30');
+
+INSERT INTO public.booking(email, pid, name, creditcard_number, booking_amount, start_date, end_date)
+VALUES ('david_johnson@example.com', 3, 'David Johnson', 3456789012345678, 1000, '2023-08-01', '2024-10-30');
+
+
+-- creditcard
+INSERT INTO public.creditcard(rid, creditcard_number, name, expiry_date, cvv, billing_address)
+VALUES ('john_doe@example.com', 1234567890123456, 'John Doe', '12/25', 123, '123 Main St, New York, NY 10001');
+
+INSERT INTO public.creditcard(rid, creditcard_number, name, expiry_date, cvv, billing_address)
+VALUES ('michael_smith@example.com', 2345678901234567, 'Michael Smith', '08/24', 234, '456 Elm St, Los Angeles, CA 90001');
+
+INSERT INTO public.creditcard(rid, creditcard_number, name, expiry_date, cvv, billing_address)
+VALUES ('david_johnson@example.com', 3456789012345678, 'David Johnson', '06/23', 345, '789 Oak St, Chicago, IL 60601');
+
+-- rewards
+INSERT INTO public.rewards(email, pid, bid, name, reward_point)
+VALUES ('john_doe@example.com', 1, 1, 'John Doe', 2000);
+
+INSERT INTO public.rewards(email, pid, bid, name, reward_point)
+VALUES ('michael_smith@example.com', 2, 2, 'Michael Smith', 1500);
+
+INSERT INTO public.rewards(email, pid, bid, name, reward_point)
+VALUES ('david_johnson@example.com', 3, 3, 'David Johnson', 1000);
+
+
+
+--address
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('john_doe@example.com', 'New York', 'NY', '10001');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('michael_smith@example.com', 'Los Angeles', 'CA', '90001');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('olivia_jones@example.com', 'Chicago', 'IL', '60601');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('david_johnson@example.com', 'Houston', 'TX', '77001');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('sophia_williams@example.com', 'Philadelphia', 'PA', '19019');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('jane_doe@example.com', 'Phoenix', 'AZ', '85001');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('emily_clark@example.com', 'San Antonio', 'TX', '78201');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('william_brown@example.com', 'San Diego', 'CA', '92101');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('james_garcia@example.com', 'Dallas', 'TX', '75201');
+
+INSERT INTO public.address(email, city, state, zipcode)
+VALUES ('charlotte_miller@example.com', 'San Jose', 'CA', '95101');
+
+--house
+
+INSERT INTO public.house(propertyid, location, number_of_rooms, sq_foot)
+VALUES (3, 'Houston Heights', 4, 2500);
+
+INSERT INTO public.house(propertyid, location, number_of_rooms, sq_foot)
+VALUES (5, 'Brentwood', 3, 2200);
+
+INSERT INTO public.house(propertyid, location, number_of_rooms, sq_foot)
+VALUES (8, 'Lincoln Park', 2, 1500);
+
+INSERT INTO public.house(propertyid, location, number_of_rooms, sq_foot)
+VALUES (10, 'River Oaks', 5, 4000);
+
+--appartments
+INSERT INTO public.appartments(propertyid, location, number_of_rooms, sq_foot, building_type)
+VALUES (1, 'Downtown LA', 2, 1200, 'Condo');
+
+INSERT INTO public.appartments(propertyid, location, number_of_rooms, sq_foot, building_type)
+VALUES (4, 'Center City', 1, 800, 'Loft');
+
+INSERT INTO public.appartments(propertyid, location, number_of_rooms, sq_foot, building_type)
+VALUES (6, 'Hollywood Hills', 1, 900, 'Condo');
+
+INSERT INTO public.appartments(propertyid, location, number_of_rooms, sq_foot, building_type)
+VALUES (9, 'Rittenhouse Square', 3, 2000, 'Penthouse');
+
+INSERT INTO public.appartments(propertyid, location, number_of_rooms, sq_foot, building_type)
+VALUES (12, 'Midtown', 0, 500, 'Studio');
+
+
+--commercial_buildings
+INSERT INTO public.commercial_buildings(propertyid, location, sq_foot, business_type)
+VALUES (2, 'The Loop', 10000, 'Office');
+
+INSERT INTO public.commercial_buildings(propertyid, location, sq_foot, business_type)
+VALUES (7, 'Magnificent Mile', 5000, 'Retail');
+
+INSERT INTO public.commercial_buildings(propertyid, location, sq_foot, business_type)
+VALUES (11, 'Old City', 7000, 'Restaurant');
+
+
+
+
+
