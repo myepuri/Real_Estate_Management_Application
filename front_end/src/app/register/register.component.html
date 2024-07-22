@@ -1,0 +1,90 @@
+<h2>Register</h2>
+<form #registerForm="ngForm" class="form">
+  <!-- NAME -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" [(ngModel)]="username" name="username" />
+  </mat-form-field>
+
+  <!-- EMAIL -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" [(ngModel)]="email" name="email" />
+  </mat-form-field>
+
+  <!-- PASSWORD -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" [(ngModel)]="password" name="password" />
+  </mat-form-field>
+
+  <!-- USER TYPE -->
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>User Type</mat-label>
+    <mat-select [(ngModel)]="usertype" name="usertype">
+      <mat-option value="renter">Renter</mat-option>
+      <mat-option value="agent">Agent</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- AGENT INFO -->
+  <div *ngIf="usertype == 'agent'">
+    <!-- NAME -->
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Agency Name</mat-label>
+      <input matInput type="text" [(ngModel)]="agencyname" name="agencyname" />
+    </mat-form-field>
+
+    <!-- JOB TITLE -->
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Job Title</mat-label>
+      <input matInput type="text" [(ngModel)]="jobtitle" name="jobtitle" />
+    </mat-form-field>
+
+    <!-- PHONE NUMBER -->
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="text" [(ngModel)]="phone" name="phone" />
+    </mat-form-field>
+  </div>
+
+  <!--  RENTER INFO -->
+  <div *ngIf="usertype == 'renter'">
+    <!-- BUDGET -->
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Budget</mat-label>
+      <input matInput type="text" [(ngModel)]="budget" name="budget" />
+    </mat-form-field>
+
+    <!-- MOVE IN DATE -->
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Preferred Move in Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="moveindate"
+        name="moveindate"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- LOCATION -->
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Preffered Location</mat-label>
+      <input matInput type="text" [(ngModel)]="location" name="location" />
+    </mat-form-field>
+  </div>
+
+  <section>
+    <button mat-raised-button color="primary" (click)="registerHandler()">
+      Register
+    </button>
+    <p class="form-question">
+      Already have an account ? <a routerLink="/login">Login Here</a>
+    </p>
+  </section>
+</form>

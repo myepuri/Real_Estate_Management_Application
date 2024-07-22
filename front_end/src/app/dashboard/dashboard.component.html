@@ -1,0 +1,103 @@
+<h2>{{ bookings[0].name }} Bookings</h2>
+
+<mat-card class="example-card" *ngFor="let booking of bookings">
+  <mat-card-content>
+    <p>ID: {{ booking.id }}</p>
+    <p>Email: {{ booking.email }}</p>
+    <p>Property ID: {{ booking.pid }}</p>
+    <p>Name: {{ booking.name }}</p>
+    <p>Credit Card Number: {{ booking.creditcard_number }}</p>
+    <p>Booking Amount: {{ booking.booking_amount }}</p>
+    <p>Lease Start Date: {{ booking.start_date | date }}</p>
+    <p>Lease End Date: {{ booking.end_date | date }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      class="btn"
+      mat-raised-button
+      color="primary"
+      (click)="updateBookingHandler(booking, updateBookingRef)"
+    >
+      UPDATE
+    </button>
+    <button
+      class="btn"
+      mat-raised-button
+      color="warn"
+      (click)="cancelBookingHandler(booking.id)"
+    >
+      CANCEL
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<h2>My Rewards</h2>
+
+<mat-card class="example-card">
+  <mat-card-content>
+    <p>Total Reward: {{ rewards }}</p>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #updateBookingRef let-data>
+  <h1 mat-dialog-title>Update Booking</h1>
+  <div mat-dialog-content>
+    <form #updateForm="ngForm" class="form">
+      <!-- NAME -->
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [(ngModel)]="username" name="username" />
+      </mat-form-field>
+
+      <!-- START DATE -->
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="startdate"
+          name="startdate"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- END DATE -->
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label>End Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          [(ngModel)]="enddate"
+          name="enddate"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </form>
+    <div mat-dialog-actions>
+      <button
+        class="button"
+        mat-raised-button
+        color="primary"
+        mat-dialog-close
+        (click)="updateBooking(data)"
+      >
+        Update
+      </button>
+      <button class="button" mat-button mat-dialog-close cdkFocusInitial>
+        Cancel
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<h2 class="showProperties">
+  <a (click)="propertiesHandler()">Show Properties</a>
+</h2>
